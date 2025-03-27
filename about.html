@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <style>
+ 
+     /* Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #111;
+    color: white;
+    padding-top: 80px; /* Prevent content from hiding under navbar */
+}
+
+/* Floating Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Logo Section */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-family:  'Cinzel Decorative', serif;
+    font-size: 22px; /* Adjusted size */
+    font-weight: bold;
+    color: black;
+}
+
+/* Navigation */
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: 30px; /* Moves the links slightly to the right */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Space between links */
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    color: black;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #555;
+}
+
+
+
+
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), 
+                url('dzein/hero.jpg') no-repeat center center/cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px 50px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #f0a500;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.3em;
+    font-weight: 400;
+    color: #ddd;
+}
+
+/* Hero Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Section Styling */
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.company-story, .mission-values, .team {
+    background: #222;
+    color: white;
+    padding: 80px 40px;
+    border-radius: 15px;
+    margin: 30px 0;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+    transform: scale(0.95);
+    transition: all 0.3s ease-in-out;
+}
+
+.company-story:hover, .mission-values:hover, .team:hover {
+    transform: scale(1);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: #f0a500;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: #f0a500;
+    margin: 10px auto 0;
+}
+
+p {
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Why We Do What We Do Section */
+.why-we-do {
+    background: #1a1a1a;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.why-we-do h2 {
+    font-size: 2.5em;
+    color: #f0a500;
+    margin-bottom: 20px;
+}
+
+.why-we-do p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.reasons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.reason {
+    max-width: 280px;
+    text-align: center;
+}
+
+.reason img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.reason h3 {
+    font-size: 1.5em;
+    color: #f0a500;
+}
+
+.reason p {
+    font-size: 1em;
+    color: #ccc;
+}
+
+
+
+
+
+
+/* Safety & Security Section */
+.safety-security {
+    background: #222;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.safety-security h2 {
+    font-size: 2.5em;
+    color: #f0a500;
+    margin-bottom: 20px;
+}
+
+.safety-security p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.safety-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.safety-item {
+    max-width: 300px;
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.safety-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.safety-item h3 {
+    color: #f0a500;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.safety-item p {
+    font-size: 1em;
+    color: #ddd;
+}
+
+
+
+
+/* How It Works Section */
+.how-it-works {
+    background: #222;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.how-it-works h2 {
+    font-size: 2.5em;
+    color: #f0a500;
+    margin-bottom: 20px;
+}
+
+.how-it-works p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.steps-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.step-item {
+    max-width: 280px;
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.step-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.step-item h3 {
+    color: #f0a500;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.step-item p {
+    font-size: 1em;
+    color: #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer Styles */
+.footer {
+    background: linear-gradient(to right, #0d0d0d, #1c1c1c);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-logo {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.footer-about p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.footer-links, .footer-social, .footer-contact {
+    margin: 20px;
+}
+
+.footer-links h3, .footer-social h3, .footer-contact h3 {
+    color: #f5a623;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 8px 0;
+}
+
+.footer-links a {
+    color: #f5a623;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-icons img:hover {
+    transform: scale(1.3);
+}
+
+/* Contact */
+.footer-contact p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.chat-btn {
+    display: inline-block;
+    background: #f5a623;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.chat-btn:hover {
+    background: white;
+    color: #f5a623;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    background: #111;
+    padding: 15px 0;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+    <script src='main.js'></script>
+
+
+
+   
+     <!-- Google Fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+     <link href="https://fonts.cdnfonts.com/css/kingsguard-calligraphy" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+
+    <main>
+     
+
+    <!-- Floating Header -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="images/dr.jpeg" alt="Dzein Rentals Logo" class="logo">
+            <h1 class="brand-name">DZEIN RENTALS</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="fleet.html">Fleet</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="location.html">Location</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>About Dzein Rentals</h1>
+            <p>Luxury, Comfort, and Class - Your Premier Car Rental Service</p>
+        </div>
+    </section>
+
+    <!-- Company Story -->
+    <section class="company-story">
+        <div class="container">
+            <h2>Our Story</h2>
+            <p>Dzein Rentals was founded with a passion for luxury and convenience. Our mission is to provide premium car rental services that cater to both locals and tourists seeking elegance and reliability.</p>
+        </div>
+    </section>
+
+    <!-- Mission and Values -->
+    <section class="mission-values">
+        <div class="container">
+            <h2>Our Mission & Values</h2>
+            <p>We are dedicated to offering high-end SUVs and luxury cars with top-tier customer service. Our values are excellence, reliability, and customer satisfaction.</p>
+        </div>
+    </section>
+
+   
+
+
+
+
+    <!-- Why We Do What We Do -->
+<section class="why-we-do">
+    <div class="container">
+        <h2>Why We Do What We Do</h2>
+        <p>At Dzein Rentals, our mission is simple—to provide luxury, comfort, and reliability for everyone. Whether you're a local in need of a premium ride or a tourist exploring in style, we ensure that every journey is smooth, stylish, and unforgettable.</p>
+        <div class="reasons">
+            <div class="reason">
+                <img src="images/x.jpeg" alt="Luxury Cars">
+                <h3>Luxury for Everyone</h3>
+                <p>From high-end SUVs to executive sedans, we have the perfect ride for every occasion.</p>
+            </div>
+            <div class="reason">
+                <img src="images/p.jpeg" alt="Tourist Friendly">
+                <h3>Tourist Friendly</h3>
+                <p>We offer seamless rental solutions for visitors, ensuring a hassle-free experience.</p>
+            </div>
+            <div class="reason">
+                <img src="images/o.jpeg" alt="Top-Tier Service">
+                <h3>Unmatched Service</h3>
+                <p>Our team is dedicated to delivering top-tier customer service, 24/7.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<!-- Safety & Security Section -->
+<section class="safety-security">
+    <div class="container">
+        <h2>Your Safety, Our Priority</h2>
+        <p>At Dzein Rentals, we ensure your peace of mind with top-notch security measures for every ride.</p>
+        
+        <div class="safety-grid">
+            <div class="safety-item">
+                <img src="images/gps.jpeg" alt="GPS Tracking">
+                <h3>24/7 GPS Tracking</h3>
+                <p>All our vehicles are equipped with real-time GPS tracking for your security and convenience.</p>
+            </div>
+            <div class="safety-item">
+                <img src="images/ins.jpeg" alt="Comprehensive Insurance">
+                <h3>Comprehensive Insurance</h3>
+                <p>Every rental comes with full insurance coverage to ensure a stress-free experience.</p>
+            </div>
+            <div class="safety-item">
+                <img src="images/aid2.jpeg" alt="Emergency Assistance">
+                <h3>Emergency Assistance</h3>
+                <p>We provide 24/7 roadside assistance for any unexpected situations on the road.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+     <!-- How It Works Section -->
+<section class="how-it-works">
+    <div class="container">
+        <h2>How It Works</h2>
+        <p>Renting a luxury car with Dzein Rentals is simple and seamless. Follow these easy steps to get on the road.</p>
+        
+        <div class="steps-grid">
+            <div class="step-item">
+                <img src="images/choose.jpeg" alt="Choose Your Car">
+                <h3>Step 1: Choose Your Car</h3>
+                <p>Browse our luxury fleet and select the perfect ride for your needs.</p>
+            </div>
+            <div class="step-item">
+                <img src="images/book.jpeg" alt="Book & Confirm">
+                <h3>Step 2: Book & Confirm</h3>
+                <p>Make your reservation online or via call. Get instant confirmation.</p>
+            </div>
+            <div class="step-item">
+                <img src="images/pick.jpeg" alt="Pickup or Delivery">
+                <h3>Step 3: Pickup or Delivery</h3>
+                <p>Pick up your car at our location or opt for doorstep delivery.</p>
+            </div>
+            <div class="step-item">
+                <img src="images/enjoy.jpeg" alt="Enjoy & Return">
+                <h3>Step 4: Enjoy & Return</h3>
+                <p>Drive in style and return the car hassle-free at the end of your rental.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Logo and About -->
+        <div class="footer-about">
+            <img src="images/dr.jpeg" alt="Dzein Rentals Logo" class="footer-logo">
+            <p>Luxury & Reliable Car Rentals. Your journey starts here.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="fleet.html">Fleet</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><img src="images/fb.jpeg" alt="Facebook"></a>
+                <a href="https://instagram.com" target="_blank"><img src="images/ig.jpeg" alt="Instagram"></a>
+                <a href="https://twitter.com" target="_blank"><img src="images/twitter.jpeg" alt="Twitter"></a>
+                <a href="https://snapchat.com" target="_blank"><img src="images/chat.jpeg" alt="Snapchat"></a>
+            </div>
+            
+        </div>
+
+        <!-- Contact & Chat -->
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>Email: support@dzeinrentals.com</p>
+            <p>Phone: +254 722 11 78 12</p>
+            <a href="https://wa.me/254722117812" class="chat-btn">Live Chat (WhatsApp)</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© <span id="year"></span> Dzein Rentals. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+
+    
+
+    </main>
+    
+</body>
+</html>
