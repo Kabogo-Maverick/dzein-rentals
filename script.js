@@ -1,3 +1,12 @@
+
+function toggleMenu() {
+    document.getElementById("nav-menu").classList.toggle("active");
+ }
+
+
+
+
+
 // Optional: Add a scroll effect for navbar background change
 window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");

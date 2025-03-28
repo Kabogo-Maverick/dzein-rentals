@@ -6,8 +6,7 @@
     <title>fleet</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
-  
-    /* Reset & Global Styles */
+     /* Reset & Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -71,6 +70,8 @@ nav {
 }
 
 .nav-links li {
+    font-family: 'Orbitron', sans-serif !important; /* Ensuring Orbitron applies */
+    font-size: 18px;
     margin: 0;
 }
 
@@ -78,7 +79,8 @@ nav {
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Orbitron', sans-serif !important; /* Ensuring Orbitron applies */
+
     color: black;
     transition: color 0.3s;
 }
@@ -86,6 +88,49 @@ nav {
 .nav-links a:hover {
     color: #555;
 }
+/* Hamburger Menu for Mobile */
+.menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 30px;
+            height: 3px;
+            background: black;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                background: white;
+                text-align: center;
+                flex-direction: column;
+                padding: 20px 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+ 
 
 
 
@@ -95,133 +140,107 @@ nav {
 
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #222, #111);
-    color: white;
-    text-align: center;
-    padding: 40px;
-}
 
 
+ /* Fleet Container */
+ .fleet-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 30px;
+        }
 
-/* Fleet Container */
-.fleet-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    padding: 30px;
-}
+        /* Car Card */
+        .car-card {
+            width: 330px;
+            height: 460px;
+            perspective: 1000px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.4s ease-in-out;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
 
-/* Car Card */
-.car-card {
-    width: 330px;
-    height: 460px;
-    perspective: 1000px;
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.4s ease-in-out;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-}
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
 
-.car-card:hover {
-    transform: scale(1.05);
-}
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
 
-.card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.8s;
-}
+        .card-front {
+            background-size: cover;
+            background-position: center;
+        }
 
-.car-card:hover .card-inner {
-    transform: rotateY(180deg);
-}
+        .card-back {
+            background: linear-gradient(135deg, #444, #222);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transform: rotateY(180deg);
+        }
 
-.card-front, .card-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-}
+        .car-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+        }
 
-.card-front {
-    background-size: cover;
-    background-position: center;
-}
+        .car-details {
+            font-size: 16px;
+            opacity: 0.9;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+        }
 
-.card-back {
-    background: linear-gradient(135deg, #444, #222);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    transform: rotateY(180deg);
-}
+        /* Booking Button */
+        .book-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #00bfff;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+        }
 
-.car-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-    font-family: 'Playfair Display', serif;
-    text-transform: uppercase;
-}
+        .book-btn:hover {
+            background: #00a3e0;
+            color: white;
+        }
 
-.car-details {
-    font-size: 16px;
-    opacity: 0.9;
-    text-align: center;
-    font-family: 'Lato', sans-serif;
-}
+        /* Neon Glow Effect */
+        .car-card {
+            box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3);
+        }
 
-/* New Sky Blue Booking Button */
-.book-btn {
-    margin-top: 15px;
-    padding: 12px 25px;
-    background: #00bfff;
-    color: black;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-}
-
-.book-btn:hover {
-    background: #00a3e0;
-    color: white;
-}
-
-/* Neon Glow Effect */
-.car-card {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3);
-}
-
-.car-card:hover {
-    box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
-}
-
-
+        .car-card:hover {
+            box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
+        }
 
 
 
@@ -553,23 +572,32 @@ body {
 
 
    
-    <!-- Floating Header -->
-    <header class="navbar">
-        <div class="logo-container">
-            <img src="images/dr.jpeg" alt="Dzein Rentals Logo" class="logo">
-            <h1 class="brand-name">DZEIN RENTALS</h1>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="fleet.html">Fleet</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="location.html">Location</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+   <!-- Floating Header -->
+<header class="navbar">
+    <div class="logo-container">
+        <img src="images/dr.jpeg" alt="Dzein Rentals Logo" class="logo">
+        <h1 class="brand-name">DZEIN RENTALS</h1>
+    </div>
+    
+    <!-- Hamburger Menu Button -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="nav-menu">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fleet.html">Fleet</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
 
 
 
@@ -588,162 +616,52 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-    <!-- Fleet Display -->
-    <div class="fleet-container">
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/p.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">BMW X5</h3>
-                    <p class="car-details">Ksh.10,000/day <br> 🚘 5 Seats |Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/x.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Range Rover</h3>
-                    <p class="car-details">Ksh.16,000/day</p> <br>Classy</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/m.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Mercedes Benz Gle</h3>
-                    <p class="car-details">Ksh 12,000/day <br>Comfort</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/n.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Toyota Fortuner</h3>
-                    <p class="car-details">Ksh.13,000/day</p><br>Class</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/o.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Rolls Royce Cullinan</h3>
-                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/x.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Rolls Royce Cullinan</h3>
-                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/t.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Rolls Royce Cullinan</h3>
-                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/g.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Rolls Royce Cullinan</h3>
-                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/u.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Rolls Royce Cullinan</h3>
-                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/d.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Rolls Royce Cullinan</h3>
-                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/p.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Rolls Royce Cullinan</h3>
-                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Car 3 -->
-        <div class="car-card">
-            <div class="card-inner">
-                <div class="card-front" style="background-image: url('images/c.jpeg');"></div>
-                <div class="card-back">
-                    <h3 class="car-title">Rolls Royce Cullinan</h3>
-                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
-                </div>
+<!-- Fleet Display -->
+<div class="fleet-container">
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/p.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">BMW X5</h3>
+                <p class="car-details">Ksh.10,000/day <br> 🚘 5 Seats | Luxury</p>
+                <button class="book-btn" onclick="bookCar('BMW X5')">Book Now</button>
             </div>
         </div>
     </div>
 
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/x.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">Range Rover</h3>
+                <p class="car-details">Ksh.16,000/day <br> Classy</p>
+                <button class="book-btn" onclick="bookCar('Range Rover')">Book Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/m.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">Mercedes Benz Gle</h3>
+                <p class="car-details">Ksh 12,000/day <br> Comfort</p>
+                <button class="book-btn" onclick="bookCar('Mercedes Benz Gle')">Book Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/o.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">Rolls Royce Cullinan</h3>
+                <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
+                <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -871,35 +789,41 @@ body {
 
     </main>
     <script>
+ function toggleMenu() {
+        document.getElementById("nav-menu").classList.toggle("active");
+    }
+    function bookCar(carName) {
+            alert("Booking " + carName + " now...");
+        }
 
-function bookCar(carName) {
-    alert("Booking " + carName + " now...");
-}
+        function rotateCard(card) {
+            let innerCard = card.querySelector('.card-inner');
+            let isFlipped = innerCard.style.transform === "rotateY(180deg)";
+            innerCard.style.transform = isFlipped ? "rotateY(0deg)" : "rotateY(180deg)";
+        }
 
+        function calculateTotal() {
+            let carPrice = parseInt(document.getElementById('car').value);
+            let days = parseInt(document.getElementById('days').value);
+            let locationFee = parseInt(document.getElementById('location').value);
+            let total = (carPrice * days) + locationFee;
+            document.getElementById('total').innerText = total.toLocaleString();
+        }
 
-function calculateTotal() {
-    let carPrice = parseInt(document.getElementById('car').value);
-    let days = parseInt(document.getElementById('days').value);
-    let locationFee = parseInt(document.getElementById('location').value);
-    let total = (carPrice * days) + locationFee;
-    document.getElementById('total').innerText = total.toLocaleString();
-}
+        function openPaymentModal() {
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
 
-function openPaymentModal() {
-    document.getElementById('paymentModal').style.display = 'flex';
-}
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
 
-function closePaymentModal() {
-    document.getElementById('paymentModal').style.display = 'none';
-}
-
-function confirmBooking() {
-    let method = document.getElementById('paymentMethod').value;
-    let total = document.getElementById('total').innerText;
-    alert(`🚗 Booking Confirmed! Paid via ${method.toUpperCase()} - Total: $${total}`);
-    closePaymentModal();
-}
-
+        function confirmBooking() {
+            let method = document.getElementById('paymentMethod').value;
+            let total = document.getElementById('total').innerText;
+            alert(`🚗 Booking Confirmed! Paid via ${method.toUpperCase()} - Total: $${total}`);
+            closePaymentModal();
+        }
     </script>
 </body>
 </html>

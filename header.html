@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dzein Rentals - Fleet</title>
+    <style>
+        /* Fleet Container */
+        .fleet-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 30px;
+        }
+
+        /* Car Card */
+        .car-card {
+            width: 330px;
+            height: 460px;
+            perspective: 1000px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.4s ease-in-out;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
+
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .card-front {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #444, #222);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transform: rotateY(180deg);
+        }
+
+        .car-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+        }
+
+        .car-details {
+            font-size: 16px;
+            opacity: 0.9;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* Booking Button */
+        .book-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #00bfff;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+        }
+
+        .book-btn:hover {
+            background: #00a3e0;
+            color: white;
+        }
+
+        /* Neon Glow Effect */
+        .car-card {
+            box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3);
+        }
+
+        .car-card:hover {
+            box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fleet Display -->
+    <div class="fleet-container">
+        <div class="car-card" onclick="rotateCard(this)">
+            <div class="card-inner">
+                <div class="card-front" style="background-image: url('images/p.jpeg');"></div>
+                <div class="card-back">
+                    <h3 class="car-title">BMW X5</h3>
+                    <p class="car-details">Ksh.10,000/day <br> 🚘 5 Seats | Luxury</p>
+                    <button class="book-btn" onclick="bookCar('BMW X5')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="car-card" onclick="rotateCard(this)">
+            <div class="card-inner">
+                <div class="card-front" style="background-image: url('images/x.jpeg');"></div>
+                <div class="card-back">
+                    <h3 class="car-title">Range Rover</h3>
+                    <p class="car-details">Ksh.16,000/day <br> Classy</p>
+                    <button class="book-btn" onclick="bookCar('Range Rover')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="car-card" onclick="rotateCard(this)">
+            <div class="card-inner">
+                <div class="card-front" style="background-image: url('images/m.jpeg');"></div>
+                <div class="card-back">
+                    <h3 class="car-title">Mercedes Benz Gle</h3>
+                    <p class="car-details">Ksh 12,000/day <br> Comfort</p>
+                    <button class="book-btn" onclick="bookCar('Mercedes Benz Gle')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="car-card" onclick="rotateCard(this)">
+            <div class="card-inner">
+                <div class="card-front" style="background-image: url('images/o.jpeg');"></div>
+                <div class="card-back">
+                    <h3 class="car-title">Rolls Royce Cullinan</h3>
+                    <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
+                    <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function bookCar(carName) {
+            alert("Booking " + carName + " now...");
+        }
+
+        function rotateCard(card) {
+            let innerCard = card.querySelector('.card-inner');
+            let isFlipped = innerCard.style.transform === "rotateY(180deg)";
+            innerCard.style.transform = isFlipped ? "rotateY(0deg)" : "rotateY(180deg)";
+        }
+
+        function calculateTotal() {
+            let carPrice = parseInt(document.getElementById('car').value);
+            let days = parseInt(document.getElementById('days').value);
+            let locationFee = parseInt(document.getElementById('location').value);
+            let total = (carPrice * days) + locationFee;
+            document.getElementById('total').innerText = total.toLocaleString();
+        }
+
+        function openPaymentModal() {
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function confirmBooking() {
+            let method = document.getElementById('paymentMethod').value;
+            let total = document.getElementById('total').innerText;
+            alert(`🚗 Booking Confirmed! Paid via ${method.toUpperCase()} - Total: $${total}`);
+            closePaymentModal();
+        }
+    </script>
+
+</body>
+</html>

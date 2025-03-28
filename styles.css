@@ -1,85 +1,128 @@
-/* Reset & Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background-color: #111;
-    color: white;
-    padding-top: 80px; /* Prevent content from hiding under navbar */
-}
-
-/* Floating Navbar */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-/* Logo Section */
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    width: 50px;
-    height: auto;
-    margin-right: 10px;
-}
-
-.brand-name {
-    font-family:  'Cinzel Decorative', serif;
-    font-size: 22px; /* Adjusted size */
-    font-weight: bold;
-    color: black;
-}
-
-/* Navigation */
-nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    margin-left: 30px; /* Moves the links slightly to the right */
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 25px; /* Space between links */
-}
-
-.nav-links li {
-    margin: 0;
-}
-
-.nav-links a {
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
-    color: black;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #555;
-}
-
-
-
+    /* Reset & Global Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        background-color: #111;
+        color: white;
+        padding-top: 80px; /* Prevent content from hiding under navbar */
+    }
+    
+    /* Floating Navbar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    
+    /* Logo Section */
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo {
+        width: 50px;
+        height: auto;
+        margin-right: 10px;
+    }
+    
+    .brand-name {
+        font-family:  'Cinzel Decorative', serif;
+        font-size: 22px; /* Adjusted size */
+        font-weight: bold;
+        color: black;
+    }
+    
+    /* Navigation */
+    nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin-left: 30px; /* Moves the links slightly to the right */
+    }
+    
+    .nav-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 25px; /* Space between links */
+    }
+    
+    .nav-links li {
+        font-family: 'Orbitron', sans-serif !important; /* Ensuring Orbitron applies */
+        font-size: 18px;
+        margin: 0;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Orbitron', sans-serif !important; /* Ensuring Orbitron applies */
+    
+        color: black;
+        transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+        color: #555;
+    }
+    /* Hamburger Menu for Mobile */
+    .menu-toggle {
+                display: none;
+                flex-direction: column;
+                cursor: pointer;
+            }
+    
+            .menu-toggle div {
+                width: 30px;
+                height: 3px;
+                background: black;
+                margin: 5px 0;
+                transition: 0.4s;
+            }
+    
+            /* Responsive Styles */
+            @media screen and (max-width: 768px) {
+                nav {
+                    display: none;
+                    position: absolute;
+                    top: 60px;
+                    right: 0;
+                    width: 100%;
+                    background: white;
+                    text-align: center;
+                    flex-direction: column;
+                    padding: 20px 0;
+                }
+    
+                .nav-links {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+    
+                nav.active {
+                    display: flex;
+                }
+    
+                .menu-toggle {
+                    display: flex;
+                }
+            }
+     
 
 
 

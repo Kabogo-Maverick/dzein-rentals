@@ -22,7 +22,7 @@
 
 
     <style>
-   /* Reset & Global Styles */
+     /* Reset & Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -86,6 +86,8 @@ nav {
 }
 
 .nav-links li {
+    font-family: 'Orbitron', sans-serif !important; /* Ensuring Orbitron applies */
+    font-size: 18px;
     margin: 0;
 }
 
@@ -93,7 +95,8 @@ nav {
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Orbitron', sans-serif !important; /* Ensuring Orbitron applies */
+
     color: black;
     transition: color 0.3s;
 }
@@ -101,7 +104,49 @@ nav {
 .nav-links a:hover {
     color: #555;
 }
+/* Hamburger Menu for Mobile */
+.menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
 
+        .menu-toggle div {
+            width: 30px;
+            height: 3px;
+            background: black;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                background: white;
+                text-align: center;
+                flex-direction: column;
+                padding: 20px 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+ 
 
 
 
@@ -431,23 +476,32 @@ iframe {
    
 
 
-    <!-- Floating Header -->
-    <header class="navbar">
-        <div class="logo-container">
-            <img src="images/dr.jpeg" alt="Dzein Rentals Logo" class="logo">
-            <h1 class="brand-name">DZEIN RENTALS</h1>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="fleet.html">Fleet</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="location.html">Location</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Floating Header -->
+<header class="navbar">
+    <div class="logo-container">
+        <img src="images/dr.jpeg" alt="Dzein Rentals Logo" class="logo">
+        <h1 class="brand-name">DZEIN RENTALS</h1>
+    </div>
+    
+    <!-- Hamburger Menu Button -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="nav-menu">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fleet.html">Fleet</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
 
 
 
@@ -584,7 +638,12 @@ iframe {
 
 
 <script>
-    // FAQ Toggle Functionality
+
+function toggleMenu() {
+        document.getElementById("nav-menu").classList.toggle("active");
+    }
+
+// FAQ Toggle Functionality
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const faqItem = button.parentElement;
