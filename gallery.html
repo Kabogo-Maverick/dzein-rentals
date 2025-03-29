@@ -151,18 +151,68 @@ nav {
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: #0a0a0a; color: white; overflow-x: hidden; }
 
-        /* 🖼 GALLERY GRID */
-        .gallery { text-align: center; padding: 50px 20px; }
+                /* 🖼 GALLERY SECTION */
+                .gallery { text-align: center; padding: 50px 20px; }
         .gallery h2 { font-size: 2em; margin-bottom: 20px; }
+
         .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px; padding: 20px; max-width: 90%; margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 90%;
+            margin: auto;
         }
+
         .grid img {
-            width: 100%; height: 100%; border-radius: 10px; transition: transform 0.3s ease-in-out;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
             filter: brightness(0.8);
+            cursor: pointer;
         }
-        .grid img:hover { transform: scale(1.05); filter: brightness(1.2); box-shadow: 0 0 15px rgba(255, 204, 0, 0.8); }
+
+        .grid img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+        }
+
+        /* 🔍 LIGHTBOX (Image Preview) */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+
+        .lightbox .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lightbox .close-btn:hover {
+            color: #ffcc00;
+        }
+
 
         /* 🎥 CINEMATIC CAROUSEL */
         .carousel { overflow: hidden; white-space: nowrap; margin-top: 40px;  display: flex;
@@ -367,8 +417,13 @@ nav {
             <img src="images/c.jpeg" alt="Tesla Model X" onclick="openLightbox('images/c.jpeg')">
             <img src="images/d.jpeg" alt="Rolls Royce" onclick="openLightbox('images/d.jpeg')">
         </div>
-        
     </section>
+
+    <!-- 🔍 LIGHTBOX MODAL -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Expanded View">
+    </div>
     
 
     <!-- 🎥 CAROUSEL -->
@@ -475,15 +530,23 @@ nav {
         document.getElementById("nav-menu").classList.toggle("active");
         }
 
-        // 🎥 LIGHTBOX FUNCTIONALITY
-        function openLightbox(imageSrc) {
+         // 🖼 OPEN LIGHTBOX
+         function openLightbox(imageSrc) {
             document.getElementById("lightbox-img").src = imageSrc;
             document.getElementById("lightbox").style.display = "flex";
-            document.getElementById("click-sound").play();
         }
+
+        // ❌ CLOSE LIGHTBOX
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
         }
+
+        // ⌨️ CLOSE LIGHTBOX ON ESC KEY
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
 
         // 🔊 SOUND EFFECTS ON HOVER
         document.querySelectorAll(".grid img").forEach((img) => {

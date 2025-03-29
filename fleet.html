@@ -6,6 +6,8 @@
     <title>fleet</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
      /* Reset & Global Styles */
 * {
     margin: 0;
@@ -134,6 +136,87 @@ nav {
 
 
 
+    
+
+.fleet-intro {
+    font-family: 'Montserrat', sans-serif;
+    padding: 80px 20px;
+    background: linear-gradient(45deg, #181818, #222, #111);
+    color: white;
+    border-bottom: 2px solid #0ff;
+    box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.1);
+}
+
+.fleet-intro h2 {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 2.8em;
+    color: #0ff;
+    text-shadow: 2px 2px 8px rgba(0, 255, 255, 0.3);
+    margin-bottom: 10px;
+}
+
+.fleet-intro p {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 1.3em;
+    max-width: 750px;
+    margin: auto;
+    color: #bbb;
+}
+
+.fleet-factors {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.factor-box {
+    background: #222;
+    padding: 20px;
+    border-radius: 12px;
+    width: 260px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.factor-box:hover {
+    transform: translateY(-5px);
+    background: #2b2b2b;
+    box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.3);
+}
+
+.factor-box h3 {
+    font-family: 'Montserrat', sans-serif;
+
+    color: #0ff;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.factor-box p {
+    font-size: 1.1em;
+    color: #ddd;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+@media (max-width: 768px) {
+    .fleet-factors {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 
 
@@ -564,6 +647,8 @@ nav {
      <link href="https://fonts.cdnfonts.com/css/kingsguard-calligraphy" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -603,7 +688,29 @@ nav {
 
 
 
+<section class="fleet-intro">
+    <h2>Pricing Flexibility</h2>
+    <p>Our rental prices adapt based on key factors, ensuring fair pricing and top-tier service.</p>
 
+    <div class="fleet-factors">
+        <div class="factor-box">
+            <h3>🚗 Car Model</h3>
+            <p>Pricing varies based on your choice of luxury SUVs, elite sedans, or high-performance vehicles, each tailored for a premium experience.</p>
+        </div>
+        <div class="factor-box">
+            <h3>📆 Rental Duration</h3>
+            <p>Long-term rentals offer discounts, while short-term rates remain flexible.</p>
+        </div>
+        <div class="factor-box">
+            <h3>📍 Distance</h3>
+            <p>Prices vary with mileage, travel routes, and terrain conditions.</p>
+        </div>
+        <div class="factor-box">
+            <h3>🛡️ Driver Options</h3>
+            <p>Self-drive or chauffeur-driven customize your experience.</p>
+        </div>
+    </div>
+</section>
 
 
 
@@ -623,7 +730,7 @@ nav {
             <div class="card-front" style="background-image: url('images/p.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">BMW X5</h3>
-                <p class="car-details">Ksh.10,000/day <br> 🚘 5 Seats | Luxury</p>
+                <p class="car-details">Ksh.10,000 - 12,000/day <br> 🚘 5 Seats | Luxury</p>
                 <button class="book-btn" onclick="bookCar('BMW X5')">Book Now</button>
             </div>
         </div>
@@ -631,22 +738,11 @@ nav {
 
     <div class="car-card" onclick="rotateCard(this)">
         <div class="card-inner">
-            <div class="card-front" style="background-image: url('images/x.jpeg');"></div>
+            <div class="card-front" style="background-image: url('images/t.jpeg');"></div>
             <div class="card-back">
-                <h3 class="car-title">Range Rover</h3>
-                <p class="car-details">Ksh.16,000/day <br> Classy</p>
-                <button class="book-btn" onclick="bookCar('Range Rover')">Book Now</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="car-card" onclick="rotateCard(this)">
-        <div class="card-inner">
-            <div class="card-front" style="background-image: url('images/m.jpeg');"></div>
-            <div class="card-back">
-                <h3 class="car-title">Mercedes Benz Gle</h3>
-                <p class="car-details">Ksh 12,000/day <br> Comfort</p>
-                <button class="book-btn" onclick="bookCar('Mercedes Benz Gle')">Book Now</button>
+                <h3 class="car-title">Prado Tx</h3>
+                <p class="car-details">Ksh.13,000-15,000/day <br> Classy</p>
+                <button class="book-btn" onclick="bookCar('TX')">Book Now</button>
             </div>
         </div>
     </div>
@@ -655,9 +751,60 @@ nav {
         <div class="card-inner">
             <div class="card-front" style="background-image: url('images/o.jpeg');"></div>
             <div class="card-back">
-                <h3 class="car-title">Rolls Royce Cullinan</h3>
-                <p class="car-details">💰 $1200/day <br> 🚘 5 Seats | V12 Luxury</p>
-                <button class="book-btn" onclick="bookCar('Rolls Royce Cullinan')">Book Now</button>
+                <h3 class="car-title">Prado V8</h3>
+                <p class="car-details">Ksh 25,000-30,000/day <br> Comfort</p>
+                <button class="book-btn" onclick="bookCar('V8')">Book Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/cx5.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">Mazda CX5</h3>
+                <p class="car-details">Ksh. 7,000-9,000/day <br> 🚘 5 Seats |Luxury</p>
+                <button class="book-btn" onclick="bookCar('Mazda CX5')">Book Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/harrier.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">Harrier</h3>
+                <p class="car-details">Ksh. 7,000-9,000/day <br> 🚘 7 Seats |Luxury</p>
+                <button class="book-btn" onclick="bookCar('Harrier')">Book Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/vellfire.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">Vellfire</h3>
+                <p class="car-details">Ksh. 9,000-12,000/day <br> 🚘 7 Seats |Luxury</p>
+                <button class="book-btn" onclick="bookCar('Vellfire')">Book Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/alphard.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">Alphard</h3>
+                <p class="car-details">Ksh. 9,000-12,000/day <br> 🚘 7 Seats |Luxury</p>
+                <button class="book-btn" onclick="bookCar('Alphard')">Book Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="car-card" onclick="rotateCard(this)">
+        <div class="card-inner">
+            <div class="card-front" style="background-image: url('images/noah.jpeg');"></div>
+            <div class="card-back">
+                <h3 class="car-title">Noah</h3>
+                <p class="car-details">Ksh. 6,000-8,000/day <br> 🚘 7 Seats |Luxury</p>
+                <button class="book-btn" onclick="bookCar('Noah')">Book Now</button>
             </div>
         </div>
     </div>
