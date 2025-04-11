@@ -278,6 +278,72 @@ h1, h2 {
 
 
 
+
+.section, .booking-container, .payment-container, .contact-container {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 40px;
+      margin: 30px 0;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .section:hover, .booking-container:hover, .payment-container:hover, .contact-container:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+    h1, h2, h3, h4 {
+      text-align: center;
+      background: linear-gradient(90deg, #ff00ff, #00ffff);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .form-control, .form-select, textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 5px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1.1em;
+    }
+    button, .btn-contact {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #ff00ff, #00ffff);
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-size: 1.3em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+    button:hover, .btn-contact:hover {
+      background: linear-gradient(90deg, #00ffff, #ff00ff);
+    }
+    .contact-info p {
+      font-size: 1.2em;
+      text-align: center;
+      color: #0ff;
+    }
+    .payment-option {
+      margin-top: 30px;
+    }
+
+
+
 /* Footer Styles */
 .footer {
     background: linear-gradient(to right, #0d0d0d, #1c1c1c);
@@ -430,24 +496,92 @@ h1, h2 {
 </header>
 
 
-    <div class="container">
-        <h1>Contact Dzein Rentals</h1>
+    
 
-        <div class="section contact-info">
-            <h2>Contact Information</h2>
-            <p><strong>Phone:</strong> <a href="tel:+254722117812">+254 722 11 78 12</a></p>
-            <p><strong>Email:</strong> <a href="mailto:info@dzeinrentals.com">info@dzeinrentals.com</a></p>
-            <p><strong>Head Office:</strong> Nairobi, Kenya</p>
-            <div class="animated-border"></div>
-        </div>
-
-        <div class="section business-hours">
-            <h2>Business Hours</h2>
-            <p>Monday - Friday: 8 AM - 8 PM</p>
-            <p>Saturday: 9 AM - 6 PM</p>
-            <p>Sunday: Closed</p>
-            <div class="animated-border"></div>
-        </div>
+        <div class="container">
+            <div class="booking-container">
+              <h2 class="section-title">Book Your Ride</h2>
+              <form id="bookingForm" action="https://formsubmit.co/dzeinrentals@gmail.com" method="POST" onsubmit="return resetForm();">
+        
+                <!-- HONEYPOT -->
+                <input type="text" name="_honey" style="display:none;"> 
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://kabogo-maverick.github.io/new/success.html">
+        
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" required>
+        
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" required>
+        
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+        
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" class="form-control">
+        
+                <label for="car">Select Car</label>
+                <select id="car" name="car" class="form-select" required>
+                  <option value="">-- Choose a Car --</option>
+                  <option value="5000">Toyota Land Cruiser - KES 5000/day</option>
+                  <option value="3500">Nissan X-Trail - KES 3500/day</option>
+                  <option value="4000">Mazda CX-5 - KES 4000/day</option>
+                  <option value="6000">Range Rover Sport - KES 6000/day</option>
+                  <option value="7000">Mercedes GLE - KES 7000/day</option>
+                  <option value="3000">Toyota Premio - KES 3000/day</option>
+                  <option value="4500">Audi Q5 - KES 4500/day</option>
+                  <option value="5500">BMW X5 - KES 5500/day</option>
+                  <option value="2500">Suzuki Swift - KES 2500/day</option>
+                  <option value="2800">Honda Fit - KES 2800/day</option>
+                </select>
+        
+                <label for="pickup">Pick-Up Date</label>
+                <input type="date" id="pickup" name="pickup" class="form-control" required>
+        
+                <label for="dropoff">Drop-Off Date</label>
+                <input type="date" id="dropoff" name="dropoff" class="form-control" required>
+        
+                <label for="total">Total Cost (KES)</label>
+                <input type="text" id="total" name="total" class="form-control" readonly>
+        
+                <label for="payment">Payment Method</label>
+                <select id="payment" name="payment" class="form-select" required>
+                  <option value="">-- Select Payment Method --</option>
+                  <option value="cash">Cash on Delivery</option>
+                  <option value="mpesa">M-Pesa</option>
+                  <option value="card">Credit/Debit Card</option>
+                  <option value="paypal">PayPal</option>
+                </select>
+        
+                <label for="message">Additional Notes</label>
+                <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+        
+                <button type="submit">Submit Booking</button>
+              </form>
+            </div>
+        
+            <!-- Payment Options Section -->
+            <div class="payment-container">
+              <h2>Payment Options</h2>
+        
+              <div class="payment-option">
+                <h4>M-Pesa Payments</h4>
+                <p>For M-Pesa payments, please use the following number:</p>
+                <p><strong>SEND MONEY: 07460464096</strong></p>
+                <p>Please send your payment to the above M-Pesa account number and retain the transaction ID for confirmation.</p>
+              </div>
+        
+              <div class="payment-option">
+                <h4>Bank Transfer</h4>
+                <p>For Bank Transfer, use the following account details:</p>
+                <p><strong>Bank Name: Equity Bank</strong></p>
+                <p><strong>Account Number: 123-456-7890</strong></p>
+                <p><strong>Account Name: Dzein Rentals</strong></p>
+                <p>Please reference your payment with your booking number when making the transfer.</p>
+              </div>
+            </div>
+        
+           
 
         <div class="section">
             <h2>Frequently Asked Questions</h2>
@@ -467,26 +601,29 @@ h1, h2 {
             <div class="animated-border"></div>
         </div>
 
-        <div class="section">
-            <h2>Send Us a Message</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-            <div class="animated-border"></div>
-        </div>
 
-        <div class="section">
-            <h2>Social Media Links</h2>
-            <div class="social-links">
-                <a href="https://wa.me/" target="_blank">WhatsApp</a>
-                <a href="https://instagram.com" target="_blank">Instagram</a>
-                <a href="https://facebook.com" target="_blank">Facebook</a>
+        <div class="container">
+            <h1>Contact Dzein Rentals</h1>
+    
+            <div class="section contact-info">
+                <h2>Contact Information</h2>
+                <p><strong>Phone:</strong> <a href="tel:+254722117812">+254 722 11 78 12</a></p>
+                <p><strong>Email:</strong> <a href="mailto:dzeinrentals@gmail.com">dzeinrentals@gmail.com</a></p>
+                <p><strong>Head Office:</strong> Nairobi, Kenya</p>
+                <div class="animated-border"></div>
             </div>
+    
+            <div class="section business-hours">
+                <h2>Business Hours</h2>
+                <p>Monday - Friday: 8 AM - 8 PM</p>
+                <p>Saturday: 9 AM - 6 PM</p>
+                <p>Sunday: Closed</p>
+                <div class="animated-border"></div>
+            </div>
+    
+
+        
             
-            <div class="animated-border"></div>
         </div>
 
         <div class="section">
@@ -547,7 +684,45 @@ h1, h2 {
     </div>
 </footer>
 
-    <script>
+     <script>
+        // Automatically calculate cost
+    const carSelect = document.getElementById("car");
+    const pickupInput = document.getElementById("pickup");
+    const dropoffInput = document.getElementById("dropoff");
+    const totalField = document.getElementById("total");
+
+    function calculateTotal() {
+      const carValue = parseInt(carSelect.value);
+      const pickupDate = new Date(pickupInput.value);
+      const dropoffDate = new Date(dropoffInput.value);
+
+      if (isNaN(carValue) || isNaN(pickupDate.getTime()) || isNaN(dropoffDate.getTime())) {
+        totalField.value = '';
+        return;
+      }
+
+      const dayDiff = Math.ceil((dropoffDate - pickupDate) / (1000 * 60 * 60 * 24));
+      if (dayDiff > 0) {
+        const total = carValue * dayDiff;
+        totalField.value = total.toLocaleString(); // Adds commas for better readability
+      } else {
+        totalField.value = '';
+      }
+    }
+
+    carSelect.addEventListener("change", calculateTotal);
+    pickupInput.addEventListener("change", calculateTotal);
+    dropoffInput.addEventListener("change", calculateTotal);
+
+    function resetForm() {
+      setTimeout(() => {
+        document.getElementById("bookingForm").reset();
+        totalField.value = '';
+      }, 2000);
+      return true;
+    }
+        
+
         function toggleFAQ(index) {
             let contents = document.querySelectorAll(".faq-content");
             contents[index].style.display = contents[index].style.display === "block" ? "none" : "block";
