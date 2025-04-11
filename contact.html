@@ -502,24 +502,24 @@ h1, h2 {
             <div class="booking-container">
               <h2 class="section-title">Book Your Ride</h2>
               <form id="bookingForm" action="https://formsubmit.co/dzeinrentals@gmail.com" method="POST" onsubmit="return resetForm();">
-        
+  
                 <!-- HONEYPOT -->
                 <input type="text" name="_honey" style="display:none;"> 
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="https://kabogo-maverick.github.io/new/success.html">
-        
+                
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" class="form-control" required>
-        
+                
                 <label for="lastName">Last Name</label>
                 <input type="text" id="lastName" name="lastName" class="form-control" required>
-        
+                
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" class="form-control" required>
-        
+                
                 <label for="phone">Phone</label>
                 <input type="text" id="phone" name="phone" class="form-control">
-        
+                
                 <label for="car">Select Car</label>
                 <select id="car" name="car" class="form-select" required>
                   <option value="">-- Choose a Car --</option>
@@ -534,16 +534,16 @@ h1, h2 {
                   <option value="2500">Suzuki Swift - KES 2500/day</option>
                   <option value="2800">Honda Fit - KES 2800/day</option>
                 </select>
-        
+                
                 <label for="pickup">Pick-Up Date</label>
                 <input type="date" id="pickup" name="pickup" class="form-control" required>
-        
+                
                 <label for="dropoff">Drop-Off Date</label>
                 <input type="date" id="dropoff" name="dropoff" class="form-control" required>
-        
+                
                 <label for="total">Total Cost (KES)</label>
                 <input type="text" id="total" name="total" class="form-control" readonly>
-        
+                
                 <label for="payment">Payment Method</label>
                 <select id="payment" name="payment" class="form-select" required>
                   <option value="">-- Select Payment Method --</option>
@@ -552,12 +552,16 @@ h1, h2 {
                   <option value="card">Credit/Debit Card</option>
                   <option value="paypal">PayPal</option>
                 </select>
-        
+                
                 <label for="message">Additional Notes</label>
                 <textarea id="message" name="message" class="form-control" rows="4"></textarea>
-        
+                
+                <!-- Hidden field for car name -->
+                <input type="hidden" id="carName" name="carName">
+              
                 <button type="submit">Submit Booking</button>
               </form>
+              
             </div>
         
             <!-- Payment Options Section -->
@@ -684,60 +688,60 @@ h1, h2 {
     </div>
 </footer>
 
-     <script>
-        // Automatically calculate cost
+     
+<script>
     const carSelect = document.getElementById("car");
     const pickupInput = document.getElementById("pickup");
     const dropoffInput = document.getElementById("dropoff");
     const totalField = document.getElementById("total");
-
+  
     function calculateTotal() {
       const carValue = parseInt(carSelect.value);
+      const carText = carSelect.options[carSelect.selectedIndex].text; // Get car name
       const pickupDate = new Date(pickupInput.value);
       const dropoffDate = new Date(dropoffInput.value);
-
+  
       if (isNaN(carValue) || isNaN(pickupDate.getTime()) || isNaN(dropoffDate.getTime())) {
         totalField.value = '';
         return;
       }
-
+  
       const dayDiff = Math.ceil((dropoffDate - pickupDate) / (1000 * 60 * 60 * 24));
       if (dayDiff > 0) {
         const total = carValue * dayDiff;
-        totalField.value = total.toLocaleString(); // Adds commas for better readability
+        totalField.value = `${total.toLocaleString()} (${dayDiff} day${dayDiff > 1 ? 's' : ''})`;
+  
+        // Append car name to a hidden field or dynamically display it
+        document.getElementById("carName").value = carText; // This can be a hidden input or you can display it in a separate field
       } else {
         totalField.value = '';
+        document.getElementById("carName").value = ''; // Reset car name if no valid date range
       }
     }
-
+  
     carSelect.addEventListener("change", calculateTotal);
     pickupInput.addEventListener("change", calculateTotal);
     dropoffInput.addEventListener("change", calculateTotal);
-
+  
     function resetForm() {
       setTimeout(() => {
         document.getElementById("bookingForm").reset();
         totalField.value = '';
+        document.getElementById("carName").value = ''; // Reset car name when form is reset
       }, 2000);
       return true;
     }
-        
-
-        function toggleFAQ(index) {
-            let contents = document.querySelectorAll(".faq-content");
-            contents[index].style.display = contents[index].style.display === "block" ? "none" : "block";
-        }
-
-
-        
-    function toggleMenu() {
-        document.getElementById("nav-menu").classList.toggle("active");
+  
+    function toggleFAQ(index) {
+      let contents = document.querySelectorAll(".faq-content");
+      contents[index].style.display = contents[index].style.display === "block" ? "none" : "block";
     }
-
-
-
-    </script>
-
+  
+    function toggleMenu() {
+      document.getElementById("nav-menu").classList.toggle("active");
+    }
+  </script>
+  
     
 </body>
 </html>
