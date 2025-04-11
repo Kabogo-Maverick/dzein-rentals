@@ -502,7 +502,6 @@ h1, h2 {
             <div class="booking-container">
               <h2 class="section-title">Book Your Ride</h2>
               <form id="bookingForm" action="https://formsubmit.co/dzeinrentals@gmail.com" method="POST" onsubmit="return resetForm();">
-  
                 <!-- HONEYPOT -->
                 <input type="text" name="_honey" style="display:none;"> 
                 <input type="hidden" name="_captcha" value="false">
@@ -521,25 +520,25 @@ h1, h2 {
                 <input type="text" id="phone" name="phone" class="form-control">
                 
                 <label for="car">Select Car</label>
-                <select id="car" name="car" class="form-select" required onchange="updateCarDetails()">
-                    <option value="">-- Choose a Car --</option>
-                    <option value="Toyota Land Cruiser-5000">Toyota Land Cruiser - KES 5000/day</option>
-                    <option value="Nissan X-Trail-3500">Nissan X-Trail - KES 3500/day</option>
-                    <option value="Mazda CX-5-4000">Mazda CX-5 - KES 4000/day</option>
-                    <option value="Range Rover Sport-6000">Range Rover Sport - KES 6000/day</option>
-                    <option value="Mercedes GLE-7000">Mercedes GLE - KES 7000/day</option>
-                    <option value="Toyota Premio-3000">Toyota Premio - KES 3000/day</option>
-                    <option value="Audi Q5-4500">Audi Q5 - KES 4500/day</option>
-                    <option value="BMW X5-5500">BMW X5 - KES 5500/day</option>
-                    <option value="Suzuki Swift-2500">Suzuki Swift - KES 2500/day</option>
-                    <option value="Honda Fit-2800">Honda Fit - KES 2800/day</option>
-                  </select>
+                <select id="car" name="car" class="form-select" required onchange="calculateTotal()">
+                  <option value="">-- Choose a Car --</option>
+                  <option value="5000|Toyota Land Cruiser">Toyota Land Cruiser - KES 5000/day</option>
+                  <option value="3500|Nissan X-Trail">Nissan X-Trail - KES 3500/day</option>
+                  <option value="4000|Mazda CX-5">Mazda CX-5 - KES 4000/day</option>
+                  <option value="6000|Range Rover Sport">Range Rover Sport - KES 6000/day</option>
+                  <option value="7000|Mercedes GLE">Mercedes GLE - KES 7000/day</option>
+                  <option value="3000|Toyota Premio">Toyota Premio - KES 3000/day</option>
+                  <option value="4500|Audi Q5">Audi Q5 - KES 4500/day</option>
+                  <option value="5500|BMW X5">BMW X5 - KES 5500/day</option>
+                  <option value="2500|Suzuki Swift">Suzuki Swift - KES 2500/day</option>
+                  <option value="2800|Honda Fit">Honda Fit - KES 2800/day</option>
+                </select>
                 
                 <label for="pickup">Pick-Up Date</label>
-                <input type="date" id="pickup" name="pickup" class="form-control" required>
+                <input type="date" id="pickup" name="pickup" class="form-control" required onchange="calculateTotal()">
                 
                 <label for="dropoff">Drop-Off Date</label>
-                <input type="date" id="dropoff" name="dropoff" class="form-control" required>
+                <input type="date" id="dropoff" name="dropoff" class="form-control" required onchange="calculateTotal()">
                 
                 <label for="total">Total Cost (KES)</label>
                 <input type="text" id="total" name="total" class="form-control" readonly>
@@ -558,7 +557,7 @@ h1, h2 {
                 
                 <!-- Hidden field for car name -->
                 <input type="hidden" id="carName" name="carName">
-              
+                
                 <button type="submit">Submit Booking</button>
               </form>
               
@@ -570,17 +569,17 @@ h1, h2 {
         
               <div class="payment-option">
                 <h4>M-Pesa Payments</h4>
-                <p>For M-Pesa payments, please use the following number:</p>
-                <p><strong>SEND MONEY: 07460464096</strong></p>
+                <p>For M-Pesa payments, please use the following number:</p><br>
+                <p><strong>SEND MONEY: 07460464096</strong></p><br>
                 <p>Please send your payment to the above M-Pesa account number and retain the transaction ID for confirmation.</p>
               </div>
         
               <div class="payment-option">
                 <h4>Bank Transfer</h4>
-                <p>For Bank Transfer, use the following account details:</p>
-                <p><strong>Bank Name: Equity Bank</strong></p>
-                <p><strong>Account Number: 123-456-7890</strong></p>
-                <p><strong>Account Name: Dzein Rentals</strong></p>
+                <p>For Bank Transfer, use the following account details:</p> <br>
+                <p><strong>Bank Name: Equity Bank</strong></p><br>
+                <p><strong>Account Number: 123-456-7890</strong></p><br>
+                <p><strong>Account Name: Dzein Rentals</strong></p><br>
                 <p>Please reference your payment with your booking number when making the transfer.</p>
               </div>
             </div>
@@ -631,11 +630,11 @@ h1, h2 {
         </div>
 
         <div class="section">
-            <h2>Terms & Privacy Policy</h2>
-            <p><strong>Rental Agreement:</strong> By renting a vehicle from Dzein Rentals, you agree to our terms, including deposit requirements and return conditions.</p>
-            <p><strong>Insurance & Liability:</strong> All rentals are covered by comprehensive insurance. Clients are responsible for excess fees in case of an accident.</p>
-            <p><strong>Data Privacy:</strong> Your personal data is securely stored and will never be shared with third parties without consent.</p>
-            <p><strong>Cancellation Policy:</strong> Cancellations made 48 hours before the rental start are eligible for a full refund.</p>
+            <h2>Terms & Privacy Policy</h2><br>
+            <p><strong>Rental Agreement:</strong> By renting a vehicle from Dzein Rentals, you agree to our terms, including deposit requirements and return conditions.</p><br>
+            <p><strong>Insurance & Liability:</strong> All rentals are covered by comprehensive insurance. Clients are responsible for excess fees in case of an accident.</p><br>
+            <p><strong>Data Privacy:</strong> Your personal data is securely stored and will never be shared with third parties without consent.</p><br>
+            <p><strong>Cancellation Policy:</strong> Cancellations made 24 hours before the rental start are eligible for a full refund.</p>
             <div class="animated-border"></div>
         </div>
 
@@ -690,56 +689,60 @@ h1, h2 {
 
      
 <script>
-    const carSelect = document.getElementById("car");
-    const pickupInput = document.getElementById("pickup");
-    const dropoffInput = document.getElementById("dropoff");
-    const totalField = document.getElementById("total");
+// Get references to HTML elements
+const carSelect = document.getElementById("car");
+const pickupInput = document.getElementById("pickup");
+const dropoffInput = document.getElementById("dropoff");
+const totalField = document.getElementById("total");
+
+// Function to calculate total cost based on car selection and dates
+function calculateTotal() {
+  const carValueText = carSelect.value;  // Get selected car value (price|name)
+  const carValueArray = carValueText.split('|');  // Split the value to extract price and car name
+  const carPrice = parseInt(carValueArray[0]);  // Extract price
+  const carName = carValueArray[1];  // Extract car name
+  const pickupDate = new Date(pickupInput.value);
+  const dropoffDate = new Date(dropoffInput.value);
+
+  // Check for valid inputs
+  if (isNaN(carPrice) || isNaN(pickupDate.getTime()) || isNaN(dropoffDate.getTime())) {
+    totalField.value = '';  // Reset the total field if invalid
+    document.getElementById("carName").value = '';  // Reset the car name
+    return;
+  }
+
+  // Calculate the number of days between pickup and dropoff dates
+  const dayDiff = Math.ceil((dropoffDate - pickupDate) / (1000 * 60 * 60 * 24));
   
-    function calculateTotal() {
-      const carValue = parseInt(carSelect.value);
-      const carText = carSelect.options[carSelect.selectedIndex].text; // Get car name
-      const pickupDate = new Date(pickupInput.value);
-      const dropoffDate = new Date(dropoffInput.value);
-  
-      if (isNaN(carValue) || isNaN(pickupDate.getTime()) || isNaN(dropoffDate.getTime())) {
-        totalField.value = '';
-        return;
-      }
-  
-      const dayDiff = Math.ceil((dropoffDate - pickupDate) / (1000 * 60 * 60 * 24));
-      if (dayDiff > 0) {
-        const total = carValue * dayDiff;
-        totalField.value = `${total.toLocaleString()} (${dayDiff} day${dayDiff > 1 ? 's' : ''})`;
-  
-        // Append car name to a hidden field or dynamically display it
-        document.getElementById("carName").value = carText; // This can be a hidden input or you can display it in a separate field
-      } else {
-        totalField.value = '';
-        document.getElementById("carName").value = ''; // Reset car name if no valid date range
-      }
-    }
-  
-    carSelect.addEventListener("change", calculateTotal);
-    pickupInput.addEventListener("change", calculateTotal);
-    dropoffInput.addEventListener("change", calculateTotal);
-  
-    function resetForm() {
-      setTimeout(() => {
-        document.getElementById("bookingForm").reset();
-        totalField.value = '';
-        document.getElementById("carName").value = ''; // Reset car name when form is reset
-      }, 2000);
-      return true;
-    }
-  
-    function toggleFAQ(index) {
-      let contents = document.querySelectorAll(".faq-content");
-      contents[index].style.display = contents[index].style.display === "block" ? "none" : "block";
-    }
-  
-    function toggleMenu() {
-      document.getElementById("nav-menu").classList.toggle("active");
-    }
+  // If valid date range
+  if (dayDiff > 0) {
+    const totalCost = carPrice * dayDiff;  // Calculate total cost based on days
+    totalField.value = `${totalCost.toLocaleString()} (${dayDiff} day${dayDiff > 1 ? 's' : ''})`;  // Display the total cost
+
+    // Store the car name in the hidden field
+    document.getElementById("carName").value = carName;
+  } else {
+    totalField.value = '';  // Reset if invalid date range
+    document.getElementById("carName").value = '';  // Reset car name
+  }
+}
+
+// Event listeners to trigger calculation when input changes
+carSelect.addEventListener("change", calculateTotal);
+pickupInput.addEventListener("change", calculateTotal);
+dropoffInput.addEventListener("change", calculateTotal);
+
+// Function to reset the form and clear fields
+function resetForm() {
+  setTimeout(() => {
+    document.getElementById("bookingForm").reset();  // Reset the form
+    totalField.value = '';  // Clear the total field
+    document.getElementById("carName").value = '';  // Clear car name
+  }, 2000);
+  return true;
+}
+
+
   </script>
   
     
