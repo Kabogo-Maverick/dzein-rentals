@@ -506,7 +506,7 @@ h1, h2 {
                 <!-- HONEYPOT -->
                 <input type="text" name="_honey" style="display:none;"> 
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://kabogo-maverick.github.io/new/success.html">
+                <input type="hidden" name="_next" value="https://kabogo-maverick.github.io/dzein-rentals/success.html">
                 
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" class="form-control" required>
@@ -521,19 +521,19 @@ h1, h2 {
                 <input type="text" id="phone" name="phone" class="form-control">
                 
                 <label for="car">Select Car</label>
-                <select id="car" name="car" class="form-select" required>
-                  <option value="">-- Choose a Car --</option>
-                  <option value="5000">Toyota Land Cruiser - KES 5000/day</option>
-                  <option value="3500">Nissan X-Trail - KES 3500/day</option>
-                  <option value="4000">Mazda CX-5 - KES 4000/day</option>
-                  <option value="6000">Range Rover Sport - KES 6000/day</option>
-                  <option value="7000">Mercedes GLE - KES 7000/day</option>
-                  <option value="3000">Toyota Premio - KES 3000/day</option>
-                  <option value="4500">Audi Q5 - KES 4500/day</option>
-                  <option value="5500">BMW X5 - KES 5500/day</option>
-                  <option value="2500">Suzuki Swift - KES 2500/day</option>
-                  <option value="2800">Honda Fit - KES 2800/day</option>
-                </select>
+                <select id="car" name="car" class="form-select" required onchange="updateCarDetails()">
+                    <option value="">-- Choose a Car --</option>
+                    <option value="Toyota Land Cruiser-5000">Toyota Land Cruiser - KES 5000/day</option>
+                    <option value="Nissan X-Trail-3500">Nissan X-Trail - KES 3500/day</option>
+                    <option value="Mazda CX-5-4000">Mazda CX-5 - KES 4000/day</option>
+                    <option value="Range Rover Sport-6000">Range Rover Sport - KES 6000/day</option>
+                    <option value="Mercedes GLE-7000">Mercedes GLE - KES 7000/day</option>
+                    <option value="Toyota Premio-3000">Toyota Premio - KES 3000/day</option>
+                    <option value="Audi Q5-4500">Audi Q5 - KES 4500/day</option>
+                    <option value="BMW X5-5500">BMW X5 - KES 5500/day</option>
+                    <option value="Suzuki Swift-2500">Suzuki Swift - KES 2500/day</option>
+                    <option value="Honda Fit-2800">Honda Fit - KES 2800/day</option>
+                  </select>
                 
                 <label for="pickup">Pick-Up Date</label>
                 <input type="date" id="pickup" name="pickup" class="form-control" required>
