@@ -125,7 +125,7 @@ nav {
             cursor: pointer;
         }
 
-        .menu-toggle div {
+.menu-toggle div {
             width: 30px;
             height: 3px;
             background: black;
@@ -133,8 +133,8 @@ nav {
             transition: 0.4s;
         }
 
-        /* Responsive Styles */
-        @media screen and (max-width: 768px) {
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
             nav {
                 display: none;
                 position: absolute;
@@ -173,45 +173,6 @@ nav {
 
 
 
-.container {
-    width: 85%;
-    max-width: 1200px;
-    margin: 40px auto;
-}
-.section {
-    background: rgba(0, 0, 0, 0.9);
-    padding: 40px;
-    margin: 30px 0;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-.section:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-}
-h1, h2 {
-    text-align: center;
-    background: linear-gradient(90deg, #ff00ff, #00ffff);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-weight: bold;
-}
-.animated-border {
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(90deg, #ff00ff, #00ffff);
-    animation: borderAnimation 3s infinite linear;
-}
-@keyframes borderAnimation {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
 .contact-info, .business-hours, .faq button {
     text-align: center;
     font-size: 1.3em;
@@ -521,17 +482,44 @@ h1, h2 {
                 
                 <label for="car">Select Car</label>
                 <select id="car" name="car" class="form-select" required onchange="calculateTotal()">
-                  <option value="">-- Choose a Car --</option>
-                  <option value="5000|Toyota Land Cruiser">Toyota Land Cruiser - KES 5000/day</option>
-                  <option value="3500|Nissan X-Trail">Nissan X-Trail - KES 3500/day</option>
-                  <option value="4000|Mazda CX-5">Mazda CX-5 - KES 4000/day</option>
-                  <option value="6000|Range Rover Sport">Range Rover Sport - KES 6000/day</option>
-                  <option value="7000|Mercedes GLE">Mercedes GLE - KES 7000/day</option>
-                  <option value="3000|Toyota Premio">Toyota Premio - KES 3000/day</option>
-                  <option value="4500|Audi Q5">Audi Q5 - KES 4500/day</option>
-                  <option value="5500|BMW X5">BMW X5 - KES 5500/day</option>
-                  <option value="2500|Suzuki Swift">Suzuki Swift - KES 2500/day</option>
-                  <option value="2800|Honda Fit">Honda Fit - KES 2800/day</option>
+                    <option value="">-- CHOOSE A CAR --</option>
+                    <option value="3500|Vitz">VITZ - KES 3500/DAY</option>
+                    <option value="3500|Demio">DEMIO - KES 3500/DAY</option>
+                    <option value="4000|Axela New Model">AXELA (NEW MODEL) - KES 4000/DAY</option>
+                    <option value="6000|Esquire">ESQUIRE - KES 6000/DAY</option>
+                    <option value="3500|Note">NOTE - KES 3500/DAY</option>
+                    <option value="6000|Mark X">MARK X - KES 6000/DAY</option>
+                    <option value="8000|Harrier">HARRIER - KES 8000/DAY</option>
+                    <option value="23000|V8">V8 - KES 23000/DAY</option>
+                    <option value="13000|TX">TX - KES 13000/DAY</option>
+                    <option value="7000|SUV">SUV - KES 7000/DAY</option>
+                    <option value="4000|Fielder">FIELDER - KES 4000/DAY</option>
+                    <option value="4000|Fielder Hybrid">FIELDER HYBRID - KES 4000/DAY</option>
+                    <option value="3500|Axio Hybrid">AXIO HYBRID - KES 3500/DAY</option>
+                    <option value="6000|Honda Vezel">HONDA VEZEL - KES 6000/DAY</option>
+                    <option value="5000|Juke">JUKE - KES 5000/DAY</option>
+                    <option value="8000|Harrier New Model">HARRIER (NEW MODEL) - KES 8000/DAY</option>
+                    <option value="65000|G Wagon">G WAGON - KES 65000/DAY</option>
+                    <option value="6000|Noah">NOAH - KES 6000/DAY</option>
+                    <option value="7000|CX5 New Model">CX-5 (NEW MODEL) - KES 7000/DAY</option>
+                    <option value="6000|7 Seaters">7-SEATERS - KES 6000/DAY</option>
+                    <option value="30000|Mercedes GLE">MERCEDES GLE - KES 30000/DAY</option>
+                    <option value="26000|Land Cruiser Wrangler">LAND CRUISER WRANGLER - KES 26000/DAY</option>
+                    <option value="16000|Van KDJ">VAN KDJ - KES 16000/DAY</option>
+                    <option value="16000|Van KCV">VAN KCV - KES 16000/DAY</option>
+                    <option value="16000|Mercedes C200">MERCEDES C200 - KES 16000/DAY</option>
+                    <option value="16000|Mercedes E250">MERCEDES E250 - KES 16000/DAY</option>
+                    <option value="9000|BMW">BMW - KES 9000/DAY</option>
+                    <option value="7000|Atenza / CX5 Diesel">ATENZA / CX-5 (DIESEL) - KES 7000/DAY</option>
+                    <option value="6500|Honda Spirewogn">HONDA SPIREWOGN - KES 6500/DAY</option>
+                    <option value="16000|Box 14 Seater">BOX (14-SEATER) - KES 16000/DAY</option>
+                    <option value="35000|Range Rover Vogue Chauffeured">RANGE ROVER VOGUE (CHAUFFEURED) - KES 35000/DAY</option>
+                    <option value="10000|10 Seater Vans">10-SEATER VANS - KES 10000/DAY</option>
+                    <option value="4500|Ford">FORD - KES 4500/DAY</option>
+                    <option value="3500|Axio">AXIO - KES 3500/DAY</option>
+                    <option value="4500|Audi">AUDI - KES 4500/DAY</option>
+                    <option value="6500|CRV Honda">CRV HONDA - KES 6500/DAY</option>
+                    
                 </select>
                 
                 <label for="pickup">Pick-Up Date</label>
@@ -586,24 +574,7 @@ h1, h2 {
         
            
 
-        <div class="section">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq">
-                <button onclick="toggleFAQ(0)">How do I book a rental?</button>
-                <div class="faq-content">Bookings can be made via our website, phone, or in-person at our office.</div>
-
-                <button onclick="toggleFAQ(1)">What payment methods do you accept?</button>
-                <div class="faq-content">We accept M-Pesa, credit/debit cards, and cash.</div>
-
-                <button onclick="toggleFAQ(2)">Do you offer chauffeur services?</button>
-                <div class="faq-content">Yes, we provide professional chauffeurs upon request.</div>
-
-                <button onclick="toggleFAQ(3)">What happens if the car breaks down?</button>
-                <div class="faq-content">We offer 24/7 roadside assistance and an immediate replacement vehicle.</div>
-            </div>
-            <div class="animated-border"></div>
-        </div>
-
+        
 
         <div class="container">
             <h1>Contact Dzein Rentals</h1>
@@ -677,7 +648,7 @@ h1, h2 {
         <div class="footer-contact">
             <h3>Contact Us</h3>
             <p>Email: support@dzeinrentals.com</p>
-            <p>Phone: +254 722 11 78 12</p>
+            <p>Phone: +254 746046496</p>
             <a href="https://wa.me/254722117812" class="chat-btn">Live Chat (WhatsApp)</a>
         </div>
     </div>
@@ -689,6 +660,9 @@ h1, h2 {
 
      
 <script>
+   function toggleMenu() {
+        document.getElementById("nav-menu").classList.toggle("active");
+    }
 // Get references to HTML elements
 const carSelect = document.getElementById("car");
 const pickupInput = document.getElementById("pickup");
