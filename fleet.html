@@ -136,195 +136,151 @@ nav {
 
 
 
-    
+  
 
-.fleet-intro {
-    font-family: 'Montserrat', sans-serif;
-    padding: 80px 20px;
-    background: linear-gradient(45deg, #181818, #222, #111);
-    color: white;
-    border-bottom: 2px solid #0ff;
-    box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.1);
-}
 
-.fleet-intro h2 {
-    font-family: 'Montserrat', sans-serif;
 
-    font-size: 2.8em;
-    color: #0ff;
-    text-shadow: 2px 2px 8px rgba(0, 255, 255, 0.3);
-    margin-bottom: 10px;
-}
 
-.fleet-intro p {
-    font-family: 'Montserrat', sans-serif;
 
-    font-size: 1.3em;
-    max-width: 750px;
-    margin: auto;
-    color: #bbb;
-}
 
-.fleet-factors {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-}
 
-.factor-box {
-    background: #222;
-    padding: 20px;
-    border-radius: 12px;
-    width: 260px;
-    text-align: center;
-    transition: 0.3s ease-in-out;
-    border: 1px solid rgba(0, 255, 255, 0.2);
-    box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
-}
 
-.factor-box:hover {
-    transform: translateY(-5px);
-    background: #2b2b2b;
-    box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.3);
-}
-
-.factor-box h3 {
-    font-family: 'Montserrat', sans-serif;
-
-    color: #0ff;
-    font-size: 1.4em;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.factor-box p {
-    font-size: 1.1em;
-    color: #ddd;
-    font-family: 'Montserrat', sans-serif;
-
-}
-
-@media (max-width: 768px) {
-    .fleet-factors {
-        flex-direction: column;
-        align-items: center;
+.fleet-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 60px 20px;
+      justify-items: center;
     }
-}
 
+    .car-card {
+      position: relative;
+      width: 300px;
+      height: 420px;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+      perspective: 1000px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.6s ease-in-out;
+      background-color: #121212;
+    }
 
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+    }
 
+    .car-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
 
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      backface-visibility: hidden;
+    }
 
+    .card-front {
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.8);
+    }
 
+    .card-back {
+      background: #101010;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      color: #f0f0f0;
+    }
 
+    .car-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff4f81;
+      text-shadow: 0 0 8px #ff4f81;
+      margin-bottom: 12px;
+      transition: color 0.3s ease;
+    }
 
- /* Fleet Container */
- .fleet-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            padding: 30px;
-        }
+    .car-price {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffeb3b;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #ffeb3b;
+    }
 
-        /* Car Card */
-        .car-card {
-            width: 330px;
-            height: 460px;
-            perspective: 1000px;
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.4s ease-in-out;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-        }
+    .car-details {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ddd;
+      margin-bottom: 18px;
+      list-style-type: none;
+      padding-left: 0;
+      transition: color 0.3s ease;
+    }
 
-        .card-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s;
-        }
+    .car-card:hover .car-title {
+      color: #00f7ff;
+    }
 
-        .card-front, .card-back {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            backface-visibility: hidden;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-        }
+    .car-card:hover .car-details {
+      color: #ff6b6b;
+    }
 
-        .card-front {
-            background-size: cover;
-            background-position: center;
-        }
+    .car-details li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-        .card-back {
-            background: linear-gradient(135deg, #444, #222);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            transform: rotateY(180deg);
-        }
+    .car-details li:hover {
+      color: #ffeb3b;
+      cursor: pointer;
+    }
 
-        .car-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-family: 'Playfair Display', serif;
-            text-transform: uppercase;
-        }
+    .book-btn {
+      background: linear-gradient(to right, #00f7ff, #ff6b6b);
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 12px #00f7ff, 0 0 15px #ff6b6b;
+    }
 
-        .car-details {
-            font-size: 16px;
-            opacity: 0.9;
-            text-align: center;
-            font-family: 'Lato', sans-serif;
-        }
+    .book-btn:hover {
+      background: linear-gradient(to right, #ff6b6b, #00f7ff);
+      box-shadow: 0 0 25px #ffeb3b;
+      transform: translateY(-5px);
+    }
 
-        /* Booking Button */
-        .book-btn {
-            margin-top: 15px;
-            padding: 12px 25px;
-            background: #00bfff;
-            color: black;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: bold;
-        }
+    @media screen and (max-width: 600px) {
+      .fleet-container {
+        padding: 30px 10px;
+      }
 
-        .book-btn:hover {
-            background: #00a3e0;
-            color: white;
-        }
-
-        /* Neon Glow Effect */
-        .car-card {
-            box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3);
-        }
-
-        .car-card:hover {
-            box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
-        }
-
+      .car-card {
+        width: 90%;
+        height: 380px;
+      }
+    }
 
 
 
@@ -686,43 +642,6 @@ nav {
 
 
 
-
-
-<section class="fleet-intro">
-    <h2>Pricing Flexibility</h2>
-    <p>Our rental prices adapt based on key factors, ensuring fair pricing and top-tier service.</p>
-
-    <div class="fleet-factors">
-        <div class="factor-box">
-            <h3>🚗 Car Model</h3>
-            <p>Pricing varies based on your choice of luxury SUVs, elite sedans, or high-performance vehicles, each tailored for a premium experience.</p>
-        </div>
-        <div class="factor-box">
-            <h3>📆 Rental Duration</h3>
-            <p>Long-term rentals offer discounts, while short-term rates remain flexible.</p>
-        </div>
-        <div class="factor-box">
-            <h3>📍 Distance</h3>
-            <p>Prices vary with mileage, travel routes, and terrain conditions.</p>
-        </div>
-        <div class="factor-box">
-            <h3>🛡️ Driver Options</h3>
-            <p>Self-drive or chauffeur-driven customize your experience.</p>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Fleet Display -->
 <div class="fleet-container">
     <div class="car-card" onclick="rotateCard(this)">
@@ -730,7 +649,13 @@ nav {
             <div class="card-front" style="background-image: url('images/p.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">BMW X5</h3>
-                <p class="car-details">Ksh.10,000 - 12,000/day <br> 🚘 5 Seats | Luxury</p>
+                <p class="car-details">From Ksh12,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
 
             </div>
@@ -742,7 +667,13 @@ nav {
             <div class="card-front" style="background-image: url('images/t.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Prado Tx</h3>
-                <p class="car-details">Ksh.13,000-15,000/day <br> Classy</p>
+                <p class="car-details">From Ksh.13,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -753,7 +684,13 @@ nav {
             <div class="card-front" style="background-image: url('images/o.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">V8</h3>
-                <p class="car-details">Ksh 25,000-30,000/day <br> Comfort</p>
+                <p class="car-details">From Ksh 25,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -763,7 +700,13 @@ nav {
             <div class="card-front" style="background-image: url('images/gwagon.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">g-wagon</h3>
-                <p class="car-details">Ksh. 60,000-65,000/day <br> comfort</p>
+                <p class="car-details">From Ksh. 60,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -773,7 +716,13 @@ nav {
             <div class="card-front" style="background-image: url('images/gle.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">gle</h3>
-                <p class="car-details">Ksh. 25,000-30,000/day <br> luxury</p>
+                <p class="car-details">From Ksh. 25,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -784,7 +733,13 @@ nav {
             <div class="card-front" style="background-image: url('images/cx5.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Mazda CX5</h3>
-                <p class="car-details">Ksh. 7,000-9,000/day <br> 🚘 5 Seats |Luxury</p>
+                <p class="car-details">From Ksh. 7,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -794,7 +749,13 @@ nav {
             <div class="card-front" style="background-image: url('images/wrangler.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">wrangler</h3>
-                <p class="car-details">Ksh. 24,500-26,000/day <br> class</p>
+                <p class="car-details">From Ksh. 24,500/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -804,7 +765,13 @@ nav {
             <div class="card-front" style="background-image: url('images/harrier.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Harrier</h3>
-                <p class="car-details">Ksh. 7,000-9,000/day <br> 🚘 7 Seats |Luxury</p>
+                <p class="car-details">From Ksh. 8,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -814,7 +781,13 @@ nav {
             <div class="card-front" style="background-image: url('images/rover.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Range rover vogue</h3>
-                <p class="car-details">Ksh. 35,000-40,000/day <br> chauffeured</p>
+                <p class="car-details">From Ksh. 35,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -824,7 +797,13 @@ nav {
             <div class="card-front" style="background-image: url('images/vellfire.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Vellfire</h3>
-                <p class="car-details">Ksh. 9,000-12,000/day <br> 🚘 7 Seats |Luxury</p>
+                <p class="car-details">KFrom Ksh. 9,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -834,7 +813,13 @@ nav {
             <div class="card-front" style="background-image: url('images/alphard.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Alphard</h3>
-                <p class="car-details">Ksh. 9,000-12,000/day <br> 🚘 7 Seats |Luxury</p>
+                <p class="car-details">From Ksh. 9,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -844,7 +829,13 @@ nav {
             <div class="card-front" style="background-image: url('images/noah.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Noah</h3>
-                <p class="car-details">Ksh. 6,000-8,000/day <br> 🚘 7 Seats |Luxury</p>
+                <p class="car-details">From Ksh. 7,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -854,7 +845,13 @@ nav {
             <div class="card-front" style="background-image: url('images/vitz.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Vitz</h3>
-                <p class="car-details">Ksh. 3,500-4,500/day <br> awesome</p>
+                <p class="car-details">From Ksh. 3,500/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -864,7 +861,13 @@ nav {
             <div class="card-front" style="background-image: url('images/demio.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Mazda demio</h3>
-                <p class="car-details">Ksh. 3,500-4,500/day <br> Fast</p>
+                <p class="car-details">From Ksh. 3,500/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -874,7 +877,13 @@ nav {
             <div class="card-front" style="background-image: url('images/axio.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">axio</h3>
-                <p class="car-details">Ksh. 3,500-4,500/day <br> great</p>
+                <p class="car-details">From Ksh. 3,500/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -884,7 +893,13 @@ nav {
             <div class="card-front" style="background-image: url('images/crv.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">crv honda</h3>
-                <p class="car-details">Ksh. 6,500-7,500/day <br> quick</p>
+                <p class="car-details">From Ksh. 6,500/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -894,7 +909,13 @@ nav {
             <div class="card-front" style="background-image: url('images/axela.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Axela(new model)</h3>
-                <p class="car-details">Ksh. 4,000-5,000/day <br> Fast</p>
+                <p class="car-details">From Ksh. 4,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -904,7 +925,13 @@ nav {
             <div class="card-front" style="background-image: url('images/note.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">note</h3>
-                <p class="car-details">Ksh. 3,500-4,500/day <br> Fast</p>
+                <p class="car-details">From Ksh. 3,500/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -914,7 +941,13 @@ nav {
             <div class="card-front" style="background-image: url('images/markx.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">mark x</h3>
-                <p class="car-details">Ksh. 6,000-7,000/day <br> Fast</p>
+                <p class="car-details">From Ksh. 6,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -924,7 +957,13 @@ nav {
             <div class="card-front" style="background-image: url('images/fielder.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">fielder</h3>
-                <p class="car-details">Ksh. 4.00-4,500/day <br> Fast</p>
+                <p class="car-details">From Ksh. 4,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -934,7 +973,13 @@ nav {
             <div class="card-front" style="background-image: url('images/axio.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">axio</h3>
-                <p class="car-details">Ksh. 3,500-4,500/day <br> perfect</p>
+                <p class="car-details">From Ksh. 3,500/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -944,7 +989,13 @@ nav {
             <div class="card-front" style="background-image: url('images/vezel.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Vezel</h3>
-                <p class="car-details">Ksh. 6,000-7,000/day <br> Realiable</p>
+                <p class="car-details">From Ksh. 6,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -953,8 +1004,14 @@ nav {
         <div class="card-inner">
             <div class="card-front" style="background-image: url('images/juke.jpeg');"></div>
             <div class="card-back">
-                <h3 class="car-title">juke</h3>
-                <p class="car-details">Ksh. 5,500-5,500/day <br> Cool</p>
+                <h3 class="car-title">Juke</h3>
+                <p class="car-details">From Ksh. 5,500/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -964,7 +1021,13 @@ nav {
             <div class="card-front" style="background-image: url('images/c250.jpeg');"></div>
             <div class="card-back">
                 <h3 class="car-title">Mercedes c250</h3>
-                <p class="car-details">Ksh. 16,000-18,000/day <br> Fast</p>
+                <p class="car-details">From Ksh. 16,000/day</p>
+                <ul class="car-details">
+                    <li>Price depends on miles covered</li>
+                    <li>Fuel option available</li>
+                    <li>Duration-based pricing</li>
+                    <li>Driver options available</li>
+                  </ul>
                 <button class="book-btn" onclick="window.location.href='contact.html#book-ride'">Book Now</button>
             </div>
         </div>
@@ -1078,9 +1141,9 @@ nav {
             <!-- Contact & Chat -->
             <div class="footer-contact">
                 <h3>Contact Us</h3>
-                <p>Email: support@dzeinrentals.com</p>
-                <p>Phone: +254 722 11 78 12</p>
-                <a href="https://wa.me/254722117812" class="chat-btn">Live Chat (WhatsApp)</a>
+                <p>Email: dzeinrentals@gmail.com</p>
+                <p>Phone: +254 746 046 496</p>
+                <a href="https://wa.me/254746046496" class="chat-btn">Live Chat (WhatsApp)</a>
             </div>
         </div>
     

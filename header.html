@@ -1,116 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Gallery - Dzein Rentals</title>
-    <style>
-        /* 🚀 Global Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: #0a0a0a; color: white; overflow-x: hidden; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dzein Rentals Fleet</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+      color: white;
+      box-sizing: border-box;
+    }
 
-        /* 🖼 GALLERY SECTION */
-        .gallery { text-align: center; padding: 50px 20px; }
-        .gallery h2 { font-size: 2em; margin-bottom: 20px; }
+    .fleet-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 60px 20px;
+      justify-items: center;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 20px;
-            max-width: 90%;
-            margin: auto;
-        }
+    .car-card {
+      position: relative;
+      width: 300px;
+      height: 420px;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+      perspective: 1000px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.6s ease-in-out;
+      background-color: #121212;
+    }
 
-        .grid img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-            filter: brightness(0.8);
-            cursor: pointer;
-        }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+    }
 
-        .grid img:hover {
-            transform: scale(1.05);
-            filter: brightness(1.2);
-            box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
-        }
+    .car-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
 
-        /* 🔍 LIGHTBOX (Image Preview) */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      backface-visibility: hidden;
+    }
 
-        .lightbox img {
-            max-width: 90%;
-            max-height: 80%;
-            border-radius: 10px;
-        }
+    .card-front {
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.8);
+    }
 
-        .lightbox .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    .card-back {
+      background: #101010;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      color: #f0f0f0;
+    }
 
-        .lightbox .close-btn:hover {
-            color: #ffcc00;
-        }
+    .car-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff4f81;
+      text-shadow: 0 0 8px #ff4f81;
+      margin-bottom: 12px;
+      transition: color 0.3s ease;
+    }
 
-    </style>
+    .car-price {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffeb3b;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #ffeb3b;
+    }
+
+    .car-details {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ddd;
+      margin-bottom: 18px;
+      list-style-type: none;
+      padding-left: 0;
+      transition: color 0.3s ease;
+    }
+
+    .car-card:hover .car-title {
+      color: #00f7ff;
+    }
+
+    .car-card:hover .car-details {
+      color: #ff6b6b;
+    }
+
+    .car-details li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .car-details li:hover {
+      color: #ffeb3b;
+      cursor: pointer;
+    }
+
+    .book-btn {
+      background: linear-gradient(to right, #00f7ff, #ff6b6b);
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 12px #00f7ff, 0 0 15px #ff6b6b;
+    }
+
+    .book-btn:hover {
+      background: linear-gradient(to right, #ff6b6b, #00f7ff);
+      box-shadow: 0 0 25px #ffeb3b;
+      transform: translateY(-5px);
+    }
+
+    @media screen and (max-width: 600px) {
+      .fleet-container {
+        padding: 30px 10px;
+      }
+
+      .car-card {
+        width: 90%;
+        height: 380px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- 🚀 INTERACTIVE GALLERY GRID -->
-    <section class="gallery">
-        <h2>Our Exclusive Collection</h2>
-        <div class="grid">
-            <img src="images/a.jpeg" alt="Luxury SUV" onclick="openLightbox('images/a.jpeg')">
-            <img src="images/b.jpeg" alt="Sportscar" onclick="openLightbox('images/b.jpeg')">
-            <img src="images/c.jpeg" alt="Tesla Model X" onclick="openLightbox('images/c.jpeg')">
-            <img src="images/d.jpeg" alt="Rolls Royce" onclick="openLightbox('images/d.jpeg')">
-        </div>
-    </section>
+  <div class="fleet-container">
 
-    <!-- 🔍 LIGHTBOX MODAL -->
-    <div class="lightbox" id="lightbox">
-        <span class="close-btn" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="" alt="Expanded View">
+    <!-- Car 1 -->
+    <div class="car-card" onclick="rotateCard(this)">
+      <div class="card-inner">
+        <div class="card-front" style="background-image: url('images/p.jpeg');"></div>
+        <div class="card-back">
+          <h3 class="car-title">BMW X5</h3>
+          <p class="car-price">Ksh.10,000 - 12,000/day</p>
+          <ul class="car-details">
+            <li>Price depends on miles covered</li>
+            <li>Fuel option available</li>
+            <li>Duration-based pricing</li>
+            <li>Driver options available</li>
+          </ul>
+          <button class="book-btn" onclick="event.stopPropagation(); location.href='contact.html#book-ride';">Book Now</button>
+        </div>
+      </div>
     </div>
 
-    <script>
-        // 🖼 OPEN LIGHTBOX
-        function openLightbox(imageSrc) {
-            document.getElementById("lightbox-img").src = imageSrc;
-            document.getElementById("lightbox").style.display = "flex";
-        }
+    <!-- Car 2 -->
+    <div class="car-card" onclick="rotateCard(this)">
+      <div class="card-inner">
+        <div class="card-front" style="background-image: url('images/t.jpeg');"></div>
+        <div class="card-back">
+          <h3 class="car-title">Prado Tx</h3>
+          <p class="car-price">Ksh.13,000 - 15,000/day</p>
+          <ul class="car-details">
+            <li>Price depends on miles covered</li>
+            <li>Fuel option available</li>
+            <li>Duration-based pricing</li>
+            <li>Driver options available</li>
+          </ul>
+          <button class="book-btn" onclick="event.stopPropagation(); location.href='contact.html#book-ride';">Book Now</button>
+        </div>
+      </div>
+    </div>
 
-        // ❌ CLOSE LIGHTBOX
-        function closeLightbox() {
-            document.getElementById("lightbox").style.display = "none";
-        }
+    <!-- Car 3 -->
+    <div class="car-card" onclick="rotateCard(this)">
+      <div class="card-inner">
+        <div class="card-front" style="background-image: url('images/gwagon.jpeg');"></div>
+        <div class="card-back">
+          <h3 class="car-title">G-Wagon</h3>
+          <p class="car-price">Ksh.60,000 - 65,000/day</p>
+          <ul class="car-details">
+            <li>Price depends on miles covered</li>
+            <li>Fuel option available</li>
+            <li>Duration-based pricing</li>
+            <li>Driver options available</li>
+          </ul>
+          <button class="book-btn" onclick="event.stopPropagation(); location.href='contact.html#book-ride';">Book Now</button>
+        </div>
+      </div>
+    </div>
 
-        // ⌨️ CLOSE LIGHTBOX ON ESC KEY
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "Escape") {
-                closeLightbox();
-            }
-        });
-    </script>
+  </div>
+
+  <script>
+    function rotateCard(card) {
+      const inner = card.querySelector('.card-inner');
+      const isFlipped = inner.style.transform === "rotateY(180deg)";
+      inner.style.transform = isFlipped ? "rotateY(0deg)" : "rotateY(180deg)";
+    }
+  </script>
 
 </body>
 </html>
