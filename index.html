@@ -4,8 +4,663 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dzein Rentals</title>
-    <link rel="stylesheet" href="styles.css">
     <script defer src="./script.js"></script>
+    <style>
+
+            /* Reset & Global Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        background-color: #111;
+        color: white;
+        padding-top: 80px; /* Prevent content from hiding under navbar */
+    }
+    
+    /* Floating Navbar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    
+    /* Logo Section */
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo {
+        width: 50px;
+        height: auto;
+        margin-right: 10px;
+    }
+    
+    .brand-name {
+        font-family:  'Cinzel Decorative', serif;
+        font-size: 22px; /* Adjusted size */
+        font-weight: bold;
+        color: black;
+    }
+    
+    /* Navigation */
+    nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin-left: 30px; /* Moves the links slightly to the right */
+    }
+    
+    .nav-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 25px; /* Space between links */
+    }
+    
+    .nav-links li {
+        font-family: 'Orbitron', sans-serif !important; /* Ensuring Orbitron applies */
+        font-size: 18px;
+        margin: 0;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Orbitron', sans-serif !important; /* Ensuring Orbitron applies */
+    
+        color: black;
+        transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+        color: #555;
+    }
+    /* Hamburger Menu for Mobile */
+    .menu-toggle {
+                display: none;
+                flex-direction: column;
+                cursor: pointer;
+            }
+    
+            .menu-toggle div {
+                width: 30px;
+                height: 3px;
+                background: black;
+                margin: 5px 0;
+                transition: 0.4s;
+            }
+    
+            /* Responsive Styles */
+            @media screen and (max-width: 768px) {
+                nav {
+                    display: none;
+                    position: absolute;
+                    top: 60px;
+                    right: 0;
+                    width: 100%;
+                    background: white;
+                    text-align: center;
+                    flex-direction: column;
+                    padding: 20px 0;
+                }
+    
+                .nav-links {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+    
+                nav.active {
+                    display: flex;
+                }
+    
+                .menu-toggle {
+                    display: flex;
+                }
+            }
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hero Section */
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('images/w.jpeg') center/cover no-repeat; /* Add your car image here */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    
+    image-rendering: crisp-edges; /* Makes edges sharper */
+    image-rendering: -webkit-optimize-contrast; /* Optimizes for high quality */
+
+}
+
+/* Dark Overlay for Readability */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Darkens background image */
+    z-index: 1;
+}
+
+/* Hero Text Styling */
+.hero h2 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #0ff; /* Cyan neon color */
+    text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.8); /* Glow effect */
+    z-index: 2;
+    position: relative;
+}
+
+.hero p {
+    font-size: 22px;
+    margin: 10px 0;
+    color: #ff0; /* Yellow neon color */
+    text-shadow: 2px 2px 10px rgba(255, 255, 0, 0.8); /* Glow effect */
+    z-index: 2;
+    position: relative;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(45deg, #ff00ff, #ff9900); /* Gradient button */
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+    z-index: 2;
+    position: relative;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #ff9900, #ff00ff);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Why Choose Us Section */
+.why-choose-us {
+    background: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    font-size: 2.5rem;
+    color: black;
+    margin-bottom: 30px;
+    font-family: 'Kingsguard Calligraphy', cursive;
+}
+
+/* Features Grid */
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Feature Box */
+.feature {
+    background: #f5f5f5;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Feature Hover Effect */
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Feature Icons */
+.feature img {
+    width: 70px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Icon Hover Effect */
+.feature:hover img {
+    transform: scale(1.1);
+}
+
+/* Feature Titles */
+.feature h3 {
+    color: #333;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+/* Feature Text */
+.feature p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.featured-fleet {
+    text-align: center;
+    padding: 60px 20px;
+    background: #111;
+    color: white;
+}
+
+.featured-fleet h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #00ffcc;
+}
+
+.fleet-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.car {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 255, 204, 0.2);
+}
+
+.car:hover {
+    transform: scale(1.05);
+}
+
+.car img {
+width: 100%;
+height: 200px; /* Set a fixed height */
+object-fit: cover; /* Ensures images fill the space without distortion */
+border-radius: 10px;
+}
+
+
+.car h3 {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+.price {
+    font-size: 1.3em;
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+.price span {
+    color: #ff6600;
+}
+
+.btn {
+    display: inline-block;
+    background: #00ffcc;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #ffcc00;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0d0d0d;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 80px 20px;
+    background: #222;
+}
+
+.testimonials h2 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    color: #00ffcc;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.testimonial-card {
+    background: linear-gradient(135deg, #333, #444);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 255, 204, 0.2);
+    max-width: 320px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 255, 204, 0.3);
+}
+
+.testimonial-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 3px solid #00ffcc;
+}
+
+.testimonial-card h4 {
+    margin: 10px 0 8px;
+    color: #ffcc00;
+    font-weight: 600;
+}
+
+.testimonial-card p {
+    font-size: 1.1em;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer Styles */
+.footer {
+    background: linear-gradient(to right, #0d0d0d, #1c1c1c);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-logo {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.footer-about p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.footer-links, .footer-social, .footer-contact {
+    margin: 20px;
+}
+
+.footer-links h3, .footer-social h3, .footer-contact h3 {
+    color: #f5a623;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 8px 0;
+}
+
+.footer-links a {
+    color: #f5a623;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-icons img:hover {
+    transform: scale(1.3);
+}
+
+/* Contact */
+.footer-contact p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.chat-btn {
+    display: inline-block;
+    background: #f5a623;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.chat-btn:hover {
+    background: white;
+    color: #f5a623;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    background: #111;
+    padding: 15px 0;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    nav {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap; /* Keeps items side by side on smaller screens */
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+
+    </style>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
@@ -262,8 +917,8 @@
             <div class="footer-contact">
                 <h3>Contact Us</h3>
                 <p>Email: dzeinrentals@gmail.com</p>
-                <p>Phone: +254 746 046 496</p>
-                <a href="https://wa.me/254746046496" class="chat-btn">Live Chat (WhatsApp)</a>
+                <p>Phone: +254 746 046 497</p>
+                <a href="https://wa.me/254722117812" class="chat-btn">Live Chat (WhatsApp)</a>
             </div>
         </div>
     
@@ -277,6 +932,122 @@
 
 
     </main>
+    <script>
+
+function toggleMenu() {
+    document.getElementById("nav-menu").classList.toggle("active");
+ }
+
+
+
+
+
+// Optional: Add a scroll effect for navbar background change
+window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+        navbar.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.2)";
+    } else {
+        navbar.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const features = document.querySelectorAll(".feature");
+
+    function checkVisibility() {
+        features.forEach((feature) => {
+            const position = feature.getBoundingClientRect().top;
+            const screenHeight = window.innerHeight;
+
+            if (position < screenHeight - 100) {
+                feature.classList.add("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkVisibility);
+    checkVisibility();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const testimonials = document.querySelectorAll(".testimonial-card");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("fade-in");
+                }
+            });
+        },
+        { threshold: 0.5 } // Trigger when 50% of the element is visible
+    );
+
+    testimonials.forEach((testimonial) => {
+        observer.observe(testimonial);
+    });
+});
+
+
+
+//carss search
+document.addEventListener("DOMContentLoaded", function () {
+    // Example available cars
+    let availableCars = ["mercedes", "bmw", "audi", "toyota", "bmx","nissan"];
+
+    // Function to filter available cars
+    window.filterCars = function () {
+        let searchInput = document.getElementById("carSearch").value.toLowerCase();
+        let carList = document.getElementById("carList");
+
+        carList.innerHTML = ""; // Clear previous search results
+
+        let filteredCars = availableCars.filter(car => car.includes(searchInput));
+
+        if (filteredCars.length === 0) {
+            carList.innerHTML = "<p class='not-found'>No available cars found.</p>";
+            return;
+        }
+
+        filteredCars.forEach(car => {
+            let carItem = document.createElement("div");
+            carItem.classList.add("car-item");
+            carItem.innerHTML = `<p>${car.toUpperCase()}</p>`;
+            carItem.onclick = () => showPackages(car);
+            carList.appendChild(carItem);
+        });
+    };
+
+    // Function to show packages
+    window.showPackages = function (car) {
+        document.getElementById("searchSection").style.display = "none"; 
+        document.getElementById("carList").style.display = "none"; 
+        document.getElementById("packageSection").classList.remove("hidden");
+    };
+
+    // Function to go back to car search
+    window.goBack = function () {
+        document.getElementById("searchSection").style.display = "block"; 
+        document.getElementById("carList").style.display = "block"; 
+        document.getElementById("packageSection").classList.add("hidden");
+    };
+});
+// Auto-update copyright year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Animate social media icons
+document.querySelectorAll(".social-icons img").forEach(icon => {
+    icon.addEventListener("mouseenter", () => {
+        icon.style.transform = "scale(1.3)";
+    });
+    icon.addEventListener("mouseleave", () => {
+        icon.style.transform = "scale(1)";
+    });
+});
+
+
+    </script>
       
 </body>
 </html>
